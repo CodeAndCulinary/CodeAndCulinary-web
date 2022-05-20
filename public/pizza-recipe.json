@@ -1,0 +1,64 @@
+{
+    "tags": ["Neapolitan Artizan pizza recipe"],
+    "content": [
+        {"type": "Header",
+            "content": "Neapolitan Artisan Pizza"
+        },
+        {"type": "Text",
+            "content": "The most important ingredient in a pizza is by far the dough. It simply is the difference between restaurant grade and a doughy mess. After doing pizza for roughly a hundred times with different methods and small variations I have come to the conclusion that one simple trick makes a world of difference - cold fermentation."
+        },
+        {"type": "List",
+            "title": "Ingredients",
+            "content": ["350ml warm water (roughly enough for 3x 280 gram balls)",
+                "1g fresh yeast", "1tbsp salt", "2/3 manitoba cream flour", "1/3 tipo 00 flour", "There is a reason why I can't give you exact amount of flours"]
+        },
+        {"type": "Text",
+            "content": "Start out by mixing water and salt. Add a bit of flour to the water to protect the yeast. Add and dissolve the yeast. Gradually add flour and knead until the texture is right. The texture you're looking for is a leathery dry feeling when you slide your palm over the dough but it will slightly stick to your finger when you poke it. The amount of flour needed to reach this depends on the kinds of flour you have and will vary vastly. Knead until homogeneous BUT it doesn't need to be smooth because <Link href='https://youtu.be/orpTeX_EGXA'>autolyse</Link> will take care of it. Cover the dough with some plastic wrap and let it sit for an hour. Divide in to balls that suite your size preference and store them in their own containers. The dough will expand more than two-fold though so take that in to account. A 280g dough is perfect for me. Now comes the fun part - cold fermentation. Put the doughs in the fridge and wait 1-3 days. A one day old dough will have the right consistency, stretchiness and chewiness but will taste a bit floury. At three days the taste is has matured to it's peak. Beyond that the yeast will start to die. These doughs can be freezed and warmed up later when needed."
+        },
+        {"type": "Subheader",
+            "content": "Dough texture demonstration:"
+        },
+        {"type": "webm",
+            "content": "/images/pizza_dough.webm"
+        },
+        {"type": "Subheader",
+            "content": "Tomato sauce"
+        },
+        {"type": "List",
+            "title": "Ingredients",
+            "content": ["1 can of whole san marzano/pomodoro tomatoes",
+                "1/2 crushed garlic clove", "5 leaves of fresh basil", "Salt to taste", "Sugar to taste", "Lemon juice to taste (optional)", "1/2tbsp extra virgin olive oil"]
+        },
+        {"type": "Text",
+            "content": "Crush the canned whole tomatoes by hand and pluck out the stems. Drain the extra water out with a strainer until you have a nice tomato flesh paste. Add the rest of the ingredients."
+        },
+        {"type": "Subheader",
+            "content": "Cheese"
+        },
+        {"type": "List",
+            "title": "null",
+            "content": ["40g mozzarella per pizza",
+                "Grated parmesan to taste"]
+        },
+        {"type": "Text",
+            "content": "Getting cheese right is essential for a pizza or otherwise you will end up with a puddle of water in your pizza, no flavor or just plain low quality garbage. I like to use full fat mozzarella. Either use dry mozzarella or alternatively rip the wet mozzarella blob in to not too thin slices and press them dry between multiple layers of paper towels. Mozzarella alone is too neutral so I like to add some grated parmesan on top."
+        },
+        {"type": "Subheader",
+            "content": "Putting everything together"
+        },
+        {"type": "List",
+            "title": "Equipment needed",
+            "content": ["Pizza stone or Pizza steel (MUST)", "Alternatively a pizza oven"]
+        },
+        {"type": "List",
+            "title": "Pro tip:",
+            "content": ["Use Semola Di Grano Duro Rimacinata while forming the base to get that real pizzeria smell and taste. Nothing is better than a little "]
+        },
+        {"type": "Text",
+            "content": "Take the dough to warm up at least 4 hours before and 6 hours if frozen. Find a pizza stretching technique that suites you (youtube has plenty of videos) and form the base. Remember that this is a no-knead dough so be extra careful with it. Try not to squash the bubbles. Use semola to keep the dough from sticking to everything. Less is better. Add tomato, parmesan and mozzarella in this order. Add toppings. Put the pizza in the oven. For a home oven use the grill setting with confection and have it set as hot as possible (I make mine in 300°C). Warm the pizza stone up for at least half an hour and have it placed as high as possible in the oven. Alternatively you can use a dedicated pizza oven which may heat up to 500°C. Every oven is different so you will need to learn how each one functions. Some may heat unevenly and you need to rotate the pizza around once or twice. Some ovens yield a better result a little lower down. That's for you to find out. The end result will hopefully be a restaurant level Neapolitan style artisan pizza."
+        },
+        {"type": "Image",
+            "content": "/images/pizza.jpg"
+        }
+    ]
+}
