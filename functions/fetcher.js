@@ -13,7 +13,7 @@ class gitFetch {
     }
     static async fetchTest(){
         const res = await fetch("https://minecraft.fandom.com/wiki/Minecraft_Wiki")
-        return
+        return {testdata: "testdata"}
     }
 }
 

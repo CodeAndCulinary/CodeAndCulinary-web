@@ -18,21 +18,17 @@ const RecipePage = ({ repositoryData, recipeData, recipeFound }) => {
 
 
 
-export async function getServerSideProps({req, res, query: { id }}) {
+export async function getStaticProps({req, res, params}) {
     // Fetch data from external API
-    res.setHeader(
-        'Cache-Control',
-        'public, s-maxage=1000, stale-while-revalidate=604800'
-    )
     var recipeFound = true
-    if (culinaryConfig.blackListEnabled == true && culinaryConfig.repositoryBlacklist.includes(id)) {
+    if (culinaryConfig.blackListEnabled == true && culinaryConfig.repositoryBlacklist.includes(params.id)) {
         recipeFound = false
-        return { props: { recipeFound }}
+        return { props: { recipeFound }, revalidate: culinaryConfig.revalidationTime,}
     }
     const repositories = await gitFetch.getRepositories()
     var recipeIndex = -1
     for (var i = 0; i < repositories.length; i++) {
-        if (repositories[i].name == id) {
+        if (repositories[i].name == params.id) {
             recipeIndex = i
             break
         }
@@ -40,16 +36,39 @@ export async function getServerSideProps({req, res, query: { id }}) {
 
     if (recipeIndex == -1) {
         recipeFound = false
-        return { props: { recipeFound }}
+        return { props: { recipeFound }, revalidate: culinaryConfig.revalidationTime,}
     }
 
     const repositoryData = repositories[recipeIndex]
-    const recipeData = await gitFetch.getRaw(id)
-    gitFetch.fetchTest()
+    const recipeData = await gitFetch.getRaw(params.id)
+    const testData = await gitFetch.fetchTest()
     console.log(recipeData)
     // Pass data to the page via props
-    return { props: { repositoryData, recipeData, recipeFound } }
+    return { props: { testData, repositoryData, recipeData, recipeFound }, revalidate: culinaryConfig.revalidationTime,}
   }
+
+  export async function getStaticPaths() {
+    const repositories = await gitFetch.getRepositories()
+    var recipes = []
+    for (var i = 0; i < repositories.length; i++) {
+        if (!culinaryConfig.repositoryBlacklist.includes(repositories[i].name)) {
+            recipes.push(repositories[i].name)
+            break
+        }
+    }
+  
+    // Get the paths we want to pre-render based on posts
+    const paths = recipes.map((recipe) => ({
+      params: { id: recipe },
+    }))
+  
+    // We'll pre-render only these paths at build time.
+    // { fallback: blocking } will server-render pages
+    // on-demand if the path doesn't exist.
+    return { paths, fallback: 'blocking' }
+  }
+
+
 
   const notFound = () => {
     return (
