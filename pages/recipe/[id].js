@@ -50,12 +50,18 @@ export async function getStaticProps({req, res, params}) {
   export async function getStaticPaths() {
     const repositories = await gitFetch.getRepositories()
     var recipes = []
-    for (var i = 0; i < repositories.length; i++) {
-        if (!culinaryConfig.repositoryBlacklist.includes(repositories[i].name)) {
-            recipes.push(repositories[i].name)
-            break
-        }
+    if (!culinaryConfig.blackListEnabled) {
+        recipes = repositories.map(function(repository){
+            return repository.name
+        })
+    } else {
+        for (var i = 0; i < repositories.length; i++) {
+            if (!culinaryConfig.repositoryBlacklist.includes(repositories[i].name)) {
+               recipes.push(repositories[i].name)
+           }
+       }
     }
+    
   
     // Get the paths we want to pre-render based on posts
     const paths = recipes.map((recipe) => ({
