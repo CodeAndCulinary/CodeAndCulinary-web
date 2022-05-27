@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { MdOutlineEmojiFoodBeverage } from 'react-icons/md';
 import { IoLogoGithub } from "react-icons/io";
 import { useState, useCallback, useEffect } from 'react';
-const navbuttons = "hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu px-4 grid place-content-center text-center"
+const navbuttons = "font-serif font-extralight hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu px-4 grid place-content-center text-center"
 const navicons = "hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu h-10 w-10 shrink-0 grid place-content-center"
 const NavBar = () => {
     return (
@@ -12,7 +12,7 @@ const NavBar = () => {
             <Link href='/'>
                 <div className='flex items-center grid-cols-3 gap-2 fit hover:cursor-pointer'>
                     <MdOutlineEmojiFoodBeverage className='w-10 h-10'/>
-                    <a className=''>Code and culinary</a>
+                    <a className='font-serif'>Code and culinary</a>
                 </div>
             </Link>
             <div className='grow shrink'></div>
