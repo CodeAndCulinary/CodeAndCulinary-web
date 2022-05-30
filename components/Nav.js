@@ -3,16 +3,16 @@ import Link from 'next/link'
 import { MdOutlineEmojiFoodBeverage } from 'react-icons/md';
 import { IoLogoGithub } from "react-icons/io";
 import { useState, useCallback, useEffect } from 'react';
-const navbuttons = "font-serif font-extralight hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu px-4 grid place-content-center text-center"
+const navbuttons = "font-light hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu px-3 grid place-content-center text-center"
 const navicons = "hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu h-10 w-10 shrink-0 grid place-content-center"
 const NavBar = () => {
     return (
         <nav className='inset-x-0 top-0 shadow backdrop-blur-sm bg-cyan-300/20 md:fixed'>
             <ul className="flex items-center gap-4 p-2 text-2xl">
-            <Link href='/'>
+            <Link href='/' passHref>
                 <div className='flex items-center grid-cols-3 gap-2 fit hover:cursor-pointer'>
                     <MdOutlineEmojiFoodBeverage className='w-10 h-10'/>
-                    <a className='font-serif'>Code and culinary</a>
+                    <a className=''>Code and culinary</a>
                 </div>
             </Link>
             <div className='grow shrink'></div>
@@ -31,7 +31,7 @@ const GetNavContent = () => {
         return (
             <>
             <li className={navbuttons}>
-                    <Link href='/'><a className="">Home</a></Link>
+                    <Link href='/' passHref><a className="">Home</a></Link>
                 </li>
                 <li className={navbuttons}>
                     <Link href='/about'><a className="">About</a></Link>
@@ -40,7 +40,7 @@ const GetNavContent = () => {
                     <Link href='/popper'><a className="">Popper</a></Link>
                 </li>
                 <li className={navicons + ' rounded-full'}>
-                <Link href='https://github.com/Stormle'>
+                <Link href='https://github.com/Stormle' passHref>
                     <div className='flex align-middle place-content-center hover:cursor-pointer'>
                         <IoLogoGithub className='w-10 h-10 shrink-0'/>
                     </div>
