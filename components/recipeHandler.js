@@ -6,11 +6,11 @@ function recipeHandler(recipeData) {
     return (
         <>
             <Tags tagsContent={ recipeData.tags }/>
-            <ul>
+            <div>
                 {recipeData.content.map((recipeObj) =>(
                     <RecipeObjectHandler recipeObject={recipeObj}/>
                 ))}
-            </ul>
+            </div>
         </>
     );
 };
@@ -26,13 +26,13 @@ const RecipeObjectHandler = ({ recipeObject }) => {
 }
 
 async function headerHandler(content) {
-
+    return(<h1>{content}</h1>)
 }
 async function textHandler(content) {
-
+    return(<p>{content}</p>)
 }
 async function subHeaderHandler(content) {
-
+    return(<h2>{content}</h2>)
 }
 async function listHandler(content) {
 
