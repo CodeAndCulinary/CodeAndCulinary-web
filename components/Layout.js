@@ -11,8 +11,9 @@ const Layout = ({ children }) => {
                 </div>
                 <div className='grow drop-shadow-lg h-fit'>
                     <Head>
-                        <title>Code and culinary</title>
-                        <meta name='keywords' content=''/>
+                        <meta name='robots' content='index, follow'/>
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta charset="UTF-8" />
                     </Head>
                 {children}
                 </div>
