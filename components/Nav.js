@@ -7,18 +7,20 @@ const navbuttons = "font-light hidden md:block subpixel-antialiased transition e
 const navicons = "hidden md:block subpixel-antialiased transition ease-out hover:shadow delay-100 hover:scale-105 duration-100 transform-gpu h-10 w-10 shrink-0 grid place-content-center"
 const NavBar = () => {
     return (
-        <nav className='inset-x-0 top-0 shadow backdrop-blur-sm bg-cyan-300/20 md:fixed'>
-            <ul className="flex items-center gap-4 p-2 text-2xl">
-            <Link href='/' passHref>
-                <div className='flex items-center grid-cols-3 gap-2 fit hover:cursor-pointer'>
-                    <MdOutlineEmojiFoodBeverage className='w-10 h-10'/>
-                    <a className=''>Code and culinary</a>
-                </div>
-            </Link>
-            <div className='grow shrink'></div>
-                <GetNavContent />
-            </ul>
-        </nav>
+        <header>
+            <nav className='inset-x-0 top-0 shadow backdrop-blur-sm bg-cyan-300/20 md:fixed'>
+                <ul className="flex items-center gap-4 p-2 text-2xl">
+                <Link href='/' passHref>
+                    <div className='flex items-center grid-cols-3 gap-2 fit hover:cursor-pointer'>
+                        <MdOutlineEmojiFoodBeverage className='w-10 h-10'/>
+                        <a className=''>Code and culinary</a>
+                    </div>
+                </Link>
+                <div className='grow shrink'></div>
+                    <GetNavContent />
+                </ul>
+            </nav>
+        </header>
     );
 };
 const icons = [

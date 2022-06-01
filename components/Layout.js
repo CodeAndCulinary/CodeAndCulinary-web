@@ -15,7 +15,10 @@ const Layout = ({ children }) => {
                         <meta property="og:title" name="viewport" content="width=device-width, initial-scale=1.0" key="title" />
                         <meta property="og:title" charset="UTF-8" key="title"/>
                     </Head>
-                {children}
+                    <main>
+                        {children}
+                    </main>
+                
                 </div>
                 <div className='w-1/12'>
                     
