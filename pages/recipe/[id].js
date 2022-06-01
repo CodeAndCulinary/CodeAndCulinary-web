@@ -5,9 +5,9 @@ const culinaryConfig = require('./../../culinaryConfig');
 const gitFetch = require('./../../functions/fetcher');
 const recipeHandler = require('./../../components/recipeHandler');
 
-const RecipePage = ({ repositoryData, recipeData, recipeFound }) => {
+const RecipePage = ({ repositoryData, recipeData, recipeFound, id }) => {
     var content
-    if (recipeFound === true) {content = recipeHandler(recipeData)} else {content = notFound()}
+    if (recipeFound === true) {content = recipeHandler(recipeData, id)} else {content = notFound()}
 
     return (
         <div>
@@ -42,9 +42,10 @@ export async function getStaticProps({req, res, params}) {
     const repositoryData = repositories[recipeIndex]
     const recipeData = await gitFetch.getRaw(params.id)
     const testData = await gitFetch.fetchTest()
+    const id = params.id
     console.log(recipeData)
     // Pass data to the page via props
-    return { props: { testData, repositoryData, recipeData, recipeFound }, revalidate: culinaryConfig.revalidationTime,}
+    return { props: { testData, repositoryData, recipeData, recipeFound, id }, revalidate: culinaryConfig.revalidationTime,}
   }
 
   export async function getStaticPaths() {
