@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
                     <Head>
                         <meta property="og:title" name='robots' content='index, follow' key="title"/>
                         <meta property="og:title" name="viewport" content="width=device-width, initial-scale=1.0" key="title" />
-                        <meta property="og:title" charset="UTF-8" key="title"/>
+                        <meta property="og:title" charSet="UTF-8" key="title"/>
                     </Head>
                     <main>
                         {children}

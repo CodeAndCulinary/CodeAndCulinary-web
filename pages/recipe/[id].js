@@ -6,12 +6,10 @@ const gitFetch = require('./../../functions/fetcher');
 const recipeHandler = require('./../../components/recipeHandler');
 
 const RecipePage = ({ repositoryData, recipeData, recipeFound, id }) => {
-    var content
-    if (recipeFound === true) {content = recipeHandler(recipeData, id)} else {content = notFound()}
 
     return (
         <div>
-            {content}
+            {recipeFound === true ? recipeHandler(recipeData, id) : notFound()}
         </div>
     );
 };

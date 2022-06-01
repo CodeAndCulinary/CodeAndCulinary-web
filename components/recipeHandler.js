@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+const culinaryConfig = require('./../culinaryConfig');
 function recipeHandler(recipeData, id) {
     
 
@@ -8,10 +9,10 @@ function recipeHandler(recipeData, id) {
         <>
             <Tags tagsContent={ recipeData.tags }/>
             <article>
-                {recipeData.content.map((recipeObj) =>(
-                    <section>
-                        {recipeObj.sectionContent.map((section) => (
-                            <RecipeObjectHandler recipeObject={section} id={id}/>
+                {recipeData.sections.map((recipeObj, index) =>(
+                    <section key={index}>
+                        {recipeObj.sectionContent.map((section, index) => (
+                            <RecipeObjectHandler recipeObject={section} id={id} key={index}/>
                         ))} 
                     </section>
                 ))}
@@ -21,34 +22,34 @@ function recipeHandler(recipeData, id) {
 };
 
 const RecipeObjectHandler = ({ recipeObject, id }) => {
-    if (recipeObject.type === "text") {return await textHandler(recipeObject.content) }
-    if (recipeObject.type === "header") {return await headerHandler(recipeObject.content) }
-    if (recipeObject.type === "subheader") {return await subHeaderHandler(recipeObject.content) }
-    if (recipeObject.type === "list") {return await listHandler(recipeObject.content) }
-    if (recipeObject.type === "image") {return await imageHandler(recipeObject.content, id) }
-    if (recipeObject.type === "webm") {return await webmHandler(recipeObject.content) }
+    if (recipeObject.type === "text") {return textHandler(recipeObject.content) }
+    if (recipeObject.type === "header") {return headerHandler(recipeObject.content) }
+    if (recipeObject.type === "subheader") {return subHeaderHandler(recipeObject.content) }
+    if (recipeObject.type === "list") {return listHandler(recipeObject) }
+    if (recipeObject.type === "image") {return imageHandler(recipeObject, id) }
+    if (recipeObject.type === "webm") {return webmHandler(recipeObject.content) }
     return (<></>)
 }
 
-async function headerHandler(content) {
+function headerHandler(content) {
     return(<h1>{content}</h1>)
 }
 
-async function textHandler(content) {
+function textHandler(content) {
     return(<p>{content}</p>)
 }
 
-async function subHeaderHandler(content) {
+function subHeaderHandler(content) {
     return(<h2>{content}</h2>)
 }
 
-async function listHandler(content) {
+function listHandler(content) {
     return(
         <>
             <IfNullTitle title={content.title}/>
             <ul>
-                {content.content.map((bullet) => (
-                    <li>{bullet}</li>
+                {content.content.map((bullet, index) => (
+                    <li key={index}>{bullet}</li>
                 ))}
             </ul>
         </>
@@ -60,17 +61,21 @@ const IfNullTitle = ({ title }) => {
     return (<p>{title}</p>)
 }
 
-async function webmHandler(content) {
+function webmHandler(content) {
 
 }
 
-async function imageHandler(content, id) {
+function imageHandler(content, id) {
+    
+    const url = "https://github.com/" + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
     return (
-    <div>
+    <div className='relative'>
         <Image
-            src={"/" + id + "/raw/main" + content.content}
+            src={url}
             alt={content.alt}
-            layout='fill'
+            width={content.width}
+            height={content.height}
+            layout='responsive'
         />
     </div>
     )

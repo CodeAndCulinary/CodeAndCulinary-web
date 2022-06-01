@@ -1,13 +1,11 @@
 /** @type {import('next').NextConfig} */
-const culinaryConfig = require('./culinaryConfig');
-const domainURL = culinaryConfig.imageURL + culinaryConfig.userName
 const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig, {
+module.exports = {
   images: {
-    domains: [domainURL],
-    minimumCacheTTL: culinaryConfig.imageCacheTTL,
+    domains: ['github.com'],
+    minimumCacheTTL: 10,
   },
 }
