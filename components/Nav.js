@@ -8,7 +8,7 @@ const navicons = "hidden md:block subpixel-antialiased transition ease-out hover
 const NavBar = () => {
     return (
         <header>
-            <nav className='inset-x-0 top-0 shadow backdrop-blur-sm bg-cyan-300/20 md:fixed'>
+            <nav className='inset-x-0 top-0 z-50 shadow backdrop-blur-sm bg-navbar-blue/80 md:fixed'>
                 <ul className="flex items-center gap-4 p-2 text-2xl">
                 <Link href='/' passHref>
                     <div className='flex items-center grid-cols-3 gap-2 fit hover:cursor-pointer'>

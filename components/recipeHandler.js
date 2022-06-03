@@ -8,7 +8,7 @@ function recipeHandler(recipeData, id) {
     return (
         <>
             <Tags tagsContent={ recipeData.tags }/>
-            <article>
+            <article className='z-0'>
                 {recipeData.sections.map((recipeObj, index) =>(
                     <section key={index}>
                         {recipeObj.sectionContent.map((section, index) => (
@@ -67,7 +67,7 @@ function webmHandler(content) {
 
 function imageHandler(content, id) {
     
-    const url = "https://github.com/" + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
+    const url = culinaryConfig.imageURL + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
     return (
     <div className='relative'>
         <Image

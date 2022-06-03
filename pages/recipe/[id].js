@@ -8,9 +8,9 @@ const recipeHandler = require('./../../components/recipeHandler');
 const RecipePage = ({ repositoryData, recipeData, recipeFound, id }) => {
 
     return (
-        <div>
+        <>
             {recipeFound === true ? recipeHandler(recipeData, id) : notFound()}
-        </div>
+        </>
     );
 };
 
