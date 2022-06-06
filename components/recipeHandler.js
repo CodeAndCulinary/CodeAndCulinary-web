@@ -66,7 +66,7 @@ function webmHandler(content) {
 }
 
 function imageHandler(content, id) {
-    
+    //https://plaiceholder.co/docs/usage
     const url = culinaryConfig.imageURL + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
     return (
     <div className='relative'>
