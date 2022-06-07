@@ -1,15 +1,14 @@
-import React from 'react'
-import Head from 'next/head'
-import { useRouter } from 'next/router'
+import * as React from "react";
 const culinaryConfig = require('./../../culinaryConfig');
 const gitFetch = require('./../../functions/fetcher');
 const recipeHandler = require('./../../components/recipeHandler');
+import { getPlaiceholder } from "plaiceholder";
 
-const RecipePage = ({ repositoryData, recipeData, recipeFound, id }) => {
+const RecipePage = ({ repositoryData, recipeData, recipeFound, id, imageCache }) => {
 
     return (
         <>
-            {recipeFound === true ? recipeHandler(recipeData, id) : notFound()}
+            {recipeFound === true ? recipeHandler(recipeData, id, imageCache) : notFound()}
         </>
     );
 };
@@ -39,11 +38,23 @@ export async function getStaticProps({req, res, params}) {
 
     const repositoryData = repositories[recipeIndex]
     const recipeData = await gitFetch.getRaw(params.id)
-    const testData = await gitFetch.fetchTest()
+    //const testData = await gitFetch.fetchTest()
     const id = params.id
+
+    //Image caching that has to be in getStaticProps
+    var imageCache = {}
+    for (var i = 0; i < recipeData.sections.length; i++) {
+        for (var i2 = 0; i2 < recipeData.sections[i].sectionContent.length; i2++) {
+            if (recipeData.sections[i].sectionContent[i2].type !== "image") {continue}
+            const imagePath = recipeData.sections[i].sectionContent[i2].content
+            const getPlaiceImage = await getPlaiceholder(culinaryConfig.imageURL + culinaryConfig.userName + "/" + id + "/raw/main" + imagePath, { size: culinaryConfig.imageBlurDetails })
+            imageCache[imagePath] = getPlaiceImage
+        }
+    }
+
     console.log(recipeData)
     // Pass data to the page via props
-    return { props: { testData, repositoryData, recipeData, recipeFound, id }, revalidate: culinaryConfig.revalidationTime,}
+    return { props: { repositoryData, recipeData, recipeFound, id, imageCache }, revalidate: culinaryConfig.revalidationTime,}
   }
 
   export async function getStaticPaths() {
