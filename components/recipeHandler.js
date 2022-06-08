@@ -27,7 +27,7 @@ const RecipeObjectHandler = ({ recipeObject, id, imageCache }) => {
     if (recipeObject.type === "subheader") {return subHeaderHandler(recipeObject.content) }
     if (recipeObject.type === "list") {return listHandler(recipeObject) }
     if (recipeObject.type === "image") {return imageHandler(recipeObject, id, imageCache) }
-    if (recipeObject.type === "webm") {return webmHandler(recipeObject.content) }
+    if (recipeObject.type === "webm") {return webmHandler(recipeObject, id) }
     return (<></>)
 }
 
@@ -61,13 +61,23 @@ const IfNullTitle = ({ title }) => {
     return (<p>{title}</p>)
 }
 
-function webmHandler(content) {
-
+function webmHandler(content, id) {
+    const url = culinaryConfig.imageURL + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
+    return (
+    <div className='relative'>
+        <Image
+            src={url}
+            alt={content.alt}
+            width= "100%"
+            height= "100%"
+            layout='responsive'
+            quality='2'
+            />
+    </div>
+    )
 }
 
 function imageHandler(content, id, imageCache) {
-    //https://plaiceholder.co/docs/usage
-    //const url = culinaryConfig.imageURL + culinaryConfig.userName + "/" + id + "/raw/main" + content.content
     return (
         <div style={{ position: "relative", display: "block", overflow: "hidden" }}>
         <div
@@ -77,14 +87,11 @@ function imageHandler(content, id, imageCache) {
             right: 0,
             bottom: 0,
             left: 0,
-            width: "100%",
-            height: "100%",
             transform: "scale(1.2)",
             filter: "blur(50px)",
             ...imageCache[content.content].css,
           }}
         />
-    
         <Image layout='responsive' {...imageCache[content.content].img} />
       </div>
     )
