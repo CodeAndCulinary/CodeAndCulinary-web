@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 const culinaryConfig = require('./../culinaryConfig');
-function recipeHandler(recipeData, id, imageCache) {
+function recipeHandler(recipeData, id, branch, imageCache) {
     
 
     return (
